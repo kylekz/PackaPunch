@@ -1,4 +1,4 @@
-package net.pwncraft.kaikz.packapunch;
+package me.freeplaynz.packapunch;
 
 import org.bukkit.ChatColor;
 import org.bukkit.Material;

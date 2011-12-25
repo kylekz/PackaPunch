@@ -1,4 +1,4 @@
-package net.pwncraft.kaikz.packapunch;
+package me.freeplaynz.packapunch;
 
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.enchantments.Enchantment;
@@ -10,6 +10,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class PackaPunch extends JavaPlugin {
     private PPPlayerListener playerListener = new PPPlayerListener(this);
+    private PPBlockListener blockListener = new PPBlockListener(this);
     public static Economy economy = null;
 
     @Override
@@ -21,6 +22,7 @@ public class PackaPunch extends JavaPlugin {
     public void onEnable() {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvent(Event.Type.PLAYER_INTERACT, playerListener, Event.Priority.Normal, this);
+        pm.registerEvent(Event.Type.BLOCK_PLACE,blockListener, Event.Priority.Normal, this);
         if(!setupEconomy()) { System.out.println("Warning no economy plugin found!"); }
         System.out.println("[PackaPunch] Enabled!");
     }

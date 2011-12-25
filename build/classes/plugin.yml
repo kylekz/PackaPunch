@@ -1,7 +1,7 @@
 name: PackaPunch
 author: Kaikz
-website: http://freeplaynz.me
+website: http://pwncraft.net/
 description: Random mystery box with enchantments.
-main: me.freeplaynz.packapunch.PackaPunch
-version: 1.1.1
+main: net.pwncraft.kaikz.packapunch.PackaPunch
+version: 1.1
 depend: [Vault]

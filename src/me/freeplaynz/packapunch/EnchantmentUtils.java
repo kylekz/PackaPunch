@@ -1,4 +1,4 @@
-package net.pwncraft.kaikz.packapunch;
+package me.freeplaynz.packapunch;
 
 import java.util.Random;
 import org.bukkit.enchantments.Enchantment;
