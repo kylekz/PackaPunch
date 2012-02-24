@@ -3,27 +3,19 @@ package me.freeplaynz.packapunch;
 import net.milkbowl.vault.economy.Economy;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
-import org.bukkit.event.Event;
-import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.RegisteredServiceProvider;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class PackaPunch extends JavaPlugin {
-    private PPPlayerListener playerListener = new PPPlayerListener(this);
-    private PPBlockListener blockListener = new PPBlockListener(this);
-    public static Economy economy = null;
+    private static Economy economy = null;
 
     @Override
-    public void onDisable() {
-        
-    }
+    public void onDisable() {}
 
     @Override
     public void onEnable() {
-        PluginManager pm = getServer().getPluginManager();
-        pm.registerEvent(Event.Type.PLAYER_INTERACT, playerListener, Event.Priority.Normal, this);
-        pm.registerEvent(Event.Type.BLOCK_PLACE,blockListener, Event.Priority.Normal, this);
-        if(!setupEconomy()) { System.out.println("Warning no economy plugin found!"); }
+        getServer().getPluginManager().registerEvents(new PPListener(), this);
+        if (!setupEconomy()) { System.out.println("Warning no economy plugin found!"); }
         System.out.println("[PackaPunch] Enabled!");
     }
     
@@ -33,6 +25,10 @@ public class PackaPunch extends JavaPlugin {
             economy = economyProvider.getProvider();
         }
         return (economy != null);
+    }
+    
+    public static Economy getEconomy() {
+        return economy;
     }
     
     public static void packThePunch(Player player, int id, int level, double amount) {   
