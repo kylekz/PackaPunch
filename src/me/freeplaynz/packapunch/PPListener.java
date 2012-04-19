@@ -49,12 +49,12 @@ public class PPListener implements Listener {
                         return;
                     }
                     if (PackaPunch.getEconomy().has(player.getName(), amount)) {
-                        if (sign.getLine(1).equalsIgnoreCase("random") && player.hasPermission("packapunch.random")) {
+                        if (sign.getLine(1).equalsIgnoreCase("random") && player.hasPermission("packapunch.use.random")) {
                             int newEnchant = EnchantmentUtils.getRandomEnchantment();
                             int newEnchantLevel = EnchantmentUtils.getRandomLevelFromId(newEnchant);
 
                             PackaPunch.packThePunch(player, newEnchant, newEnchantLevel, amount);
-                        } else if (sign.getLine(1).equalsIgnoreCase("fixed") && player.hasPermission("packapunch.fixed")) {
+                        } else if (sign.getLine(1).equalsIgnoreCase("fixed") && player.hasPermission("packapunch.use.fixed")) {
                             String enchantShit = sign.getLine(2);
                             if (enchantShit.equals("") || enchantShit == null || !enchantShit.contains(":")) {
                                 player.sendMessage(ChatColor.RED + "[Pack-a-Punch] Invalid ID or level!");
